@@ -1,0 +1,54 @@
+﻿@{ 
+    ViewBag.Title = ViewBag.teamname;
+}
+
+@model BowlingTeamViewModel
+
+<h1 id="team">@ViewBag.teamname</h1>
+<table class="table">
+
+    <thead class="thead-dark">
+        <tr>
+            <th>First Name</th>
+            <th>Middle Initial</th>
+            <th>Last Name</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip</th>
+            <th>Phone Number</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var x in Model.Bowlers)
+        { 
+
+           <tr>
+            <td><a asp-action="FilterByTeam"></a>@x.BowlerFirstName</td>
+            <td>@x.BowlerMiddleInit</td>
+            <td>@x.BowlerLastName</td>
+            <td>@x.BowlerAddress</td>
+            <td>@x.BowlerCity</td>
+            <td>@x.BowlerState</td>
+            <td>@x.BowlerZip</td>
+            <td>@x.BowlerPhoneNumber</td>
+           </tr>
+            
+
+        }
+    </tbody>
+
+</table>
+
+<!--Paging info handed through HomeController along with BowlingTeamViewModel-->
+<div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true" page-class="btn"
+     page-class-normal="btn-outline-dark" page-class-selected="btn-primary"></div>
+
+<script>
+        let x = document.getElementById("team").innerHTML
+        let y = "link-" + x
+        document.getElementById(y).style.color = "red"
+
+
+</script>

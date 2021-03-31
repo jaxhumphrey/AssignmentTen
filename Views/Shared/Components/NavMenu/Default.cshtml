@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Teams>
+
+
+
+@foreach (var team in Model)
+{
+<a>
+    <form asp-action="GetTeam">
+        <input type="hidden" name="teamname" value="@team.TeamName" />
+        <button id="link-@team.TeamName" class="btn" onclick="HighlightLink('id')" type="submit">@team.TeamName</button>
+    </form>
+    
+</a>
+
+}
